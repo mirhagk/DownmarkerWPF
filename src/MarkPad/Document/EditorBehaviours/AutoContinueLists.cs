@@ -71,7 +71,7 @@ namespace MarkPad.Document.EditorBehaviours
                 var indexText = match.Value.Replace(".", "").Trim();
                 var canParse = int.TryParse(indexText, out index);
                 var nextLine = match.Value;
-                if (canParse) nextLine = match.Value.Replace(indexText, index == 1 ? "1" : (index + 1).ToString());
+                if (canParse) nextLine = match.Value.Replace(indexText, (index + 1).ToString());
 
                 editor.TextArea.Selection.ReplaceSelectionWithText(Environment.NewLine + nextLine);
             }
