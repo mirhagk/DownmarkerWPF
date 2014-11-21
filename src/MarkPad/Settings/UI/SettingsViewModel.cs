@@ -40,6 +40,7 @@ namespace MarkPad.Settings.UI
         public PluginViewModel SelectedPlugin { get; set; }
         public IEnumerable<PluginViewModel> Plugins { get; private set; }
         public IndentType IndentType { get; set; }
+        public ContinueListType ContinueListType { get; set; }
         public bool EnableMarkdownExtra { get; set; }
         public bool CanEditBlog { get { return currentBlog != null; } }
         public bool CanRemoveBlog { get { return currentBlog != null; } }
@@ -83,6 +84,11 @@ namespace MarkPad.Settings.UI
         public ObservableCollection<IndentType> IndentTypes
         {
             get { return new ObservableCollection<IndentType> { IndentType.Tabs, IndentType.Spaces }; }
+        }
+
+        public ObservableCollection<ContinueListType> ContinueListTypes
+        {
+            get { return new ObservableCollection<ContinueListType>(Enum.GetValues(typeof(ContinueListType)).Cast<ContinueListType>()); }
         }
         
 
@@ -205,6 +211,7 @@ namespace MarkPad.Settings.UI
             settings.FloatingToolBarEnabled = EnableFloatingToolBar;
             settings.IsEditorColorsInverted = IsColorsInverted;
             settings.IndentType = IndentType;
+            settings.ContinueListType = ContinueListType;
             settings.Language = SelectedLanguage;
             settings.MarkdownExtraEnabled = EnableMarkdownExtra;
 

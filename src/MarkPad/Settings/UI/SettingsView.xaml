@@ -82,22 +82,38 @@
                                 <Controls:ToggleSwitch Margin="-10,5,0,0" IsChecked="{Binding EnableFloatingToolBar, Mode=TwoWay}" Content="floating toolbar"/>
                                 <Controls:ToggleSwitch Margin="-10,5,0,0" IsChecked="{Binding EnableMarkdownExtra, Mode=TwoWay}" Content="markdown extra"/>
                                 <Grid Margin="0,5,0,0">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                  </Grid.ColumnDefinitions>
-                  <TextBlock Text="indent "
-                             FontFamily="Segoe UI Semibold" FontSize="14.667"/>
-                  <ComboBox ItemsSource="{Binding IndentTypes}" SelectedItem="{Binding IndentType}"
-                          HorizontalAlignment="Right" Grid.Column="1" AutomationProperties.AutomationId="IndentType">
-                    <ComboBox.ItemTemplate>
-                      <DataTemplate>
-                        <TextBlock Text="{Binding Converter={Converters:EnumDisplayConverter}}" />
-                      </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                  </ComboBox>
-                </Grid>
-              </StackPanel>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="indent "
+                             FontFamily="Segoe UI Semibold" FontSize="14.667" d:IsHidden="True"/>
+                                    <ComboBox ItemsSource="{Binding IndentTypes}" SelectedItem="{Binding IndentType}"
+                          HorizontalAlignment="Right" Grid.Column="1" AutomationProperties.AutomationId="IndentType" d:IsHidden="True">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Converter={Converters:EnumDisplayConverter}}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                                <Grid Margin="0,5,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="auto continue lists "
+                             FontFamily="Segoe UI Semibold" FontSize="14.667" d:IsHidden="True"/>
+                                    <ComboBox ItemsSource="{Binding ContinueListTypes}" SelectedItem="{Binding ContinueListType}"
+                          HorizontalAlignment="Right" Grid.Column="1" AutomationProperties.AutomationId="ContinueListType" d:IsHidden="True">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Converter={Converters:EnumDisplayConverter}}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
             </ItemsControl>
             <ItemsControl Background="{x:Null}"   Margin="35,0,0,0"
 				            BorderBrush="{x:Null}" 

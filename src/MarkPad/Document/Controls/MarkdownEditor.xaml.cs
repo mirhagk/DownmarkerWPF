@@ -70,6 +70,17 @@ namespace MarkPad.Document.Controls
             };
         }
 
+        #region public ContinueListType ContinueListType
+        public static readonly DependencyProperty ContinueListTypeProperty =
+            DependencyProperty.Register("ContinueListType", typeof(ContinueListType), typeof(MarkdownEditor), new PropertyMetadata(ContinueListType.Increment));
+
+        public ContinueListType ContinueListType
+        {
+            get { return (ContinueListType)GetValue(ContinueListTypeProperty); }
+            set { SetValue(ContinueListTypeProperty, value); }
+        }
+        #endregion
+
         #region public IndentType IndentType
         public static readonly DependencyProperty IndentTypeProperty =
             DependencyProperty.Register("IndentType", typeof (IndentType), typeof (MarkdownEditor), new PropertyMetadata(IndentType.Spaces));

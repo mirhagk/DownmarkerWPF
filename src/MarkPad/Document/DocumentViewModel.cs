@@ -58,6 +58,7 @@ namespace MarkPad.Document
             FontSize = GetFontSize();
             IsColorsInverted = GetIsColorsInverted();
             IndentType = settingsProvider.GetSettings<MarkPadSettings>().IndentType;
+            ContinueListType = settingsProvider.GetSettings<MarkPadSettings>().ContinueListType;
             
             Original = "";
             Document = new TextDocument();
@@ -295,6 +296,8 @@ namespace MarkPad.Document
 
         public IndentType IndentType { get; private set; }
 
+        public ContinueListType ContinueListType { get; private set; }
+
         /// <summary>
         /// Get the font size that was set in the settings.
         /// </summary>
@@ -371,7 +374,8 @@ namespace MarkPad.Document
 
         public void Handle(SettingsChangedEvent message)
         {
-            IndentType = settingsProvider.GetSettings<MarkPadSettings>().IndentType;            
+            IndentType = settingsProvider.GetSettings<MarkPadSettings>().IndentType;
+            ContinueListType = settingsProvider.GetSettings<MarkPadSettings>().ContinueListType;
         }
 
         public DocumentView View

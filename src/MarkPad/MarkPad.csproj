@@ -364,6 +364,7 @@
       <DependentUpon>HtmlPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings\IsolatedStorageSettingsStore.cs" />
+    <Compile Include="Settings\Models\ContinueListType.cs" />
     <Compile Include="Settings\Models\WebSourceType.cs" />
     <Compile Include="Settings\SettingsProvider.cs" />
     <Compile Include="Settings\UI\BlogSettingsView.xaml.cs">

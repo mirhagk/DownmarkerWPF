@@ -23,6 +23,7 @@ namespace MarkPad.Settings.Models
 		public bool FloatingToolBarEnabled { get; set; }
 
         public IndentType IndentType { get; set; }
+        public ContinueListType ContinueListType { get; set; }
 
         [DefaultValue(SpellingLanguages.Australian)]
         public SpellingLanguages Language { get; set; }
