@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Caliburn.Micro;
 using ICSharpCode.AvalonEdit;
 using MarkPad.Document.Events;
+using MarkPad.Settings.Models;
 
 namespace MarkPad.Document.EditorBehaviours
 {
@@ -24,6 +25,11 @@ namespace MarkPad.Document.EditorBehaviours
         // [>]      a single raquo
         // [\s]*    zero or more whitespace chars
         readonly Regex blockquoteRegex = new Regex(@"[\s]*[>][\s]*", RegexOptions.Compiled);
+        Func<ContinueListType> continueListTypeSetting;
+        public AutoContinueLists(Func<ContinueListType> continueListTypeSetting)
+        {
+            this.continueListTypeSetting = continueListTypeSetting;
+        }
 
         public void Handle(EditorPreviewKeyDownEvent e)
         {
@@ -71,7 +77,19 @@ namespace MarkPad.Document.EditorBehaviours
                 var indexText = match.Value.Replace(".", "").Trim();
                 var canParse = int.TryParse(indexText, out index);
                 var nextLine = match.Value;
-                if (canParse) nextLine = match.Value.Replace(indexText, index == 1 ? "1" : (index + 1).ToString());
+                if (canParse)
+                {
+                    var setting = continueListTypeSetting();
+                    var replaceNum = indexText;
+                    if (setting == ContinueListType.Increment)
+                        replaceNum = (index + 1).ToString();
+                    else if (setting == ContinueListType.Repeat)
+                        replaceNum = "1";
+                    else if (setting == ContinueListType.Smart)
+                        replaceNum = index == 1 ? "1" : (index + 1).ToString();
+
+                    nextLine = match.Value.Replace(indexText, replaceNum);
+                }
 
                 editor.TextArea.Selection.ReplaceSelectionWithText(Environment.NewLine + nextLine);
             }

@@ -60,7 +60,7 @@ namespace MarkPad.Document.Controls
                 new ControlRightTweakedForMarkdown(),
                 new HardLineBreak(),
                 overtypeMode,
-                new AutoContinueLists(),
+                new AutoContinueLists(()=>ContinueListType),
                 new IndentLists(()=>IndentType),
                 autoPairedCharacters
             };
